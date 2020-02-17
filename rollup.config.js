@@ -67,13 +67,13 @@ function genConfig(name) {
         preferBuiltins: false,
         extensions: [".js", ".json", ".vue"]
       }),
-      commonjs(),
       vue({ compileTemplate: true, css: true }),
       json(),
       babel({
         exclude: "node_modules/**",
         runtimeHelpers: true
       }),
+      commonjs(),
       filesize()
     ].concat(opts.plugins || []),
     output: {
