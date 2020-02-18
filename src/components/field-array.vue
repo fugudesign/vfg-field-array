@@ -25,7 +25,7 @@
             @model-updated='modelUpdated'/>
         </component>
       </span>
-      <span v-else-if="schema.items" :class="schema.fieldClasses">
+      <span v-else-if="schema.items">
         <component
           :is='getFieldType(schema.items)'
           :model='item'
@@ -50,32 +50,32 @@
           @moveItemDown="moveElementDown(index)"
           @removeItem='removeElement(index)'>
           <input type="text" v-model="value[index]" :class="schema.itemFieldClasses" :name='generateInputName(index)' :id="fieldId + index" />
-          <input
+          <button
             type="button"
-            :value="removeElementButtonLabel"
+            v-html="removeElementButtonLabel"
             @click="removeElement(index)"
-            v-if='schema.showRemoveButton'/>
+            v-if='schema.showRemoveButton'></button>
         </component>
       </span>
       <input type="text" v-model="value[index]" :class="schema.itemFieldClasses" :name='generateInputName(index)' :id="fieldId + index" v-else/>
-      <input
+      <button
         type="button"
-        :value="moveElementUpButtonLabel"
+        v-html="moveElementUpButtonLabel"
         :class="schema.moveElementUpButtonClasses"
         @click="moveElementUp(index)"
-        v-if='schema.showModeElementUpButton'/>
-      <input
+        v-if='schema.showModeElementUpButton'></button>
+      <button
         type="button"
-        :value="moveElementDownButtonLabel"
+        v-html="moveElementDownButtonLabel"
         :class="schema.moveElementDownButtonClasses"
         @click="moveElementDown(index)"
-        v-if='schema.showModeElementDownButton'/>
-      <input
+        v-if='schema.showModeElementDownButton'></button>
+      <button
         type="button"
-        :value="removeElementButtonLabel"
+        v-html="removeElementButtonLabel"
         :class="schema.removeElementButtonClasses"
         @click="removeElement(index)"
-        v-if='schema.showRemoveButton'/>
+        v-if='schema.showRemoveButton'></button>
     </div>
     <component
       v-if="schema.showEmptyComponentAtBottom"
@@ -84,7 +84,7 @@
       :schema='generateSchema(this, schema.items, "newItem")'
       :formOptions='formOptions'
       @model-updated='emptyComponentModelUpdated'/>
-    <input v-if="!schema.hideAddButton" type="button" :value="newElementButtonLabel" :class="schema.newElementButtonLabelClasses" @click="newElement"/>
+    <button v-if="!schema.hideAddButton" type="button" v-html="newElementButtonLabel" :class="schema.newElementButtonLabelClasses" @click="newElement"></button>
   </div>
 </template>
 

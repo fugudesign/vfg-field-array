@@ -10229,7 +10229,7 @@ var __vue_render__ = function __vue_render__() {
         validated: _vm.validated,
         "model-updated": _vm.modelUpdated
       }
-    })], 1)], 1) : _vm.schema.items ? _c("span", { class: _vm.schema.fieldClasses }, [_c(_vm.getFieldType(_vm.schema.items), {
+    })], 1)], 1) : _vm.schema.items ? _c("span", [_c(_vm.getFieldType(_vm.schema.items), {
       tag: "component",
       attrs: {
         model: item,
@@ -10286,10 +10286,10 @@ var __vue_render__ = function __vue_render__() {
           _vm.$set(_vm.value, index, $event.target.value);
         }
       }
-    }), _vm._v(" "), _vm.schema.showRemoveButton ? _c("input", {
-      attrs: {
-        type: "button",
-        value: _vm.removeElementButtonLabel
+    }), _vm._v(" "), _vm.schema.showRemoveButton ? _c("button", {
+      attrs: { type: "button" },
+      domProps: {
+        innerHTML: _vm._s(_vm.removeElementButtonLabel)
       },
       on: {
         click: function click($event) {
@@ -10318,33 +10318,33 @@ var __vue_render__ = function __vue_render__() {
           _vm.$set(_vm.value, index, $event.target.value);
         }
       }
-    }), _vm._v(" "), _vm.schema.showModeElementUpButton ? _c("input", {
+    }), _vm._v(" "), _vm.schema.showModeElementUpButton ? _c("button", {
       class: _vm.schema.moveElementUpButtonClasses,
-      attrs: {
-        type: "button",
-        value: _vm.moveElementUpButtonLabel
+      attrs: { type: "button" },
+      domProps: {
+        innerHTML: _vm._s(_vm.moveElementUpButtonLabel)
       },
       on: {
         click: function click($event) {
           return _vm.moveElementUp(index);
         }
       }
-    }) : _vm._e(), _vm._v(" "), _vm.schema.showModeElementDownButton ? _c("input", {
+    }) : _vm._e(), _vm._v(" "), _vm.schema.showModeElementDownButton ? _c("button", {
       class: _vm.schema.moveElementDownButtonClasses,
-      attrs: {
-        type: "button",
-        value: _vm.moveElementDownButtonLabel
+      attrs: { type: "button" },
+      domProps: {
+        innerHTML: _vm._s(_vm.moveElementDownButtonLabel)
       },
       on: {
         click: function click($event) {
           return _vm.moveElementDown(index);
         }
       }
-    }) : _vm._e(), _vm._v(" "), _vm.schema.showRemoveButton ? _c("input", {
+    }) : _vm._e(), _vm._v(" "), _vm.schema.showRemoveButton ? _c("button", {
       class: _vm.schema.removeElementButtonClasses,
-      attrs: {
-        type: "button",
-        value: _vm.removeElementButtonLabel
+      attrs: { type: "button" },
+      domProps: {
+        innerHTML: _vm._s(_vm.removeElementButtonLabel)
       },
       on: {
         click: function click($event) {
@@ -10360,9 +10360,10 @@ var __vue_render__ = function __vue_render__() {
       formOptions: _vm.formOptions
     },
     on: { "model-updated": _vm.emptyComponentModelUpdated }
-  }) : _vm._e(), _vm._v(" "), !_vm.schema.hideAddButton ? _c("input", {
+  }) : _vm._e(), _vm._v(" "), !_vm.schema.hideAddButton ? _c("button", {
     class: _vm.schema.newElementButtonLabelClasses,
-    attrs: { type: "button", value: _vm.newElementButtonLabel },
+    attrs: { type: "button" },
+    domProps: { innerHTML: _vm._s(_vm.newElementButtonLabel) },
     on: { click: _vm.newElement }
   }) : _vm._e()], 2) : _vm._e();
 };
