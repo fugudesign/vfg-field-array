@@ -21,6 +21,7 @@
             :model='item'
             :schema='generateSchema(value, schema.items, index)'
             :formOptions='formOptions'
+            @validated="validated"
             @model-updated='modelUpdated'/>
         </component>
       </span>
@@ -30,7 +31,8 @@
           :model='item'
           :schema='generateSchema(value, schema.items, index)'
           :formOptions='formOptions'
-          @model-updated='modelUpdated'/>
+          @validated="validated"
+          @model-updated="modelUpdated"/>
       </span>
       <span v-else-if="schema.itemContainerComponent">
         <component
@@ -228,7 +230,12 @@
       getFieldType(fieldSchema) {
         return "field-" + fieldSchema.type;
       },
-      modelUpdated() {},
+      validated(isValid, errors) {
+        this.$emit('validated', isValid, errors)
+      },
+      modelUpdated(model, schema) {
+        this.$emit("model-updated", model, schema);
+      },
       validate(calledParent) {
         this.clearValidationErrors();
         let validateAsync = this.formOptions.validateAsync || false;
