@@ -25,9 +25,8 @@
             @model-updated='modelUpdated'/>
         </component>
       </span>
-      <span v-else-if="schema.items">
+      <span v-else-if="schema.items" :class="schema.fieldClasses">
         <component
-          :class="schema.fieldClasses"
           :is='getFieldType(schema.items)'
           :model='item'
           :schema='generateSchema(value, schema.items, index)'
