@@ -9912,9 +9912,6 @@ if (inBrowser) {
 //
 //
 //
-//
-//
-//
 
 var script = {
   mixins: [VueFormGenerator.abstractField],
@@ -10306,7 +10303,6 @@ var __vue_render__ = function __vue_render__() {
       }
     }), _vm._v(" "), _vm.schema.showModeElementUpButton ? _c("button", {
       class: _vm.schema.moveElementUpButtonClasses,
-      attrs: { type: "button" },
       domProps: {
         innerHTML: _vm._s(_vm.moveElementUpButtonLabel)
       },
@@ -10317,7 +10313,6 @@ var __vue_render__ = function __vue_render__() {
       }
     }) : _vm._e(), _vm._v(" "), _vm.schema.showModeElementDownButton ? _c("button", {
       class: _vm.schema.moveElementDownButtonClasses,
-      attrs: { type: "button" },
       domProps: {
         innerHTML: _vm._s(_vm.moveElementDownButtonLabel)
       },
@@ -10328,7 +10323,6 @@ var __vue_render__ = function __vue_render__() {
       }
     }) : _vm._e(), _vm._v(" "), _vm.schema.showRemoveButton ? _c("button", {
       class: _vm.schema.removeElementButtonClasses,
-      attrs: { type: "button" },
       domProps: {
         innerHTML: _vm._s(_vm.removeElementButtonLabel)
       },
@@ -10348,7 +10342,6 @@ var __vue_render__ = function __vue_render__() {
     on: { "model-updated": _vm.emptyComponentModelUpdated }
   }) : _vm._e(), _vm._v(" "), !_vm.schema.hideAddButton ? _c("button", {
     class: _vm.schema.newElementButtonLabelClasses,
-    attrs: { type: "button" },
     domProps: { innerHTML: _vm._s(_vm.newElementButtonLabel) },
     on: { click: _vm.newElement }
   }) : _vm._e()], 2) : _vm._e();
