@@ -14,7 +14,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var vueFormGenerator = require('vue-form-generator');
+var VueFormGenerator = _interopDefault(require('vue-form-generator'));
 var isFunction = _interopDefault(require('lodash.isfunction'));
 var isArray = _interopDefault(require('lodash.isarray'));
 var isString = _interopDefault(require('lodash.isstring'));
@@ -9937,7 +9937,7 @@ if (inBrowser) {
 //
 
 var script = {
-  mixins: [vueFormGenerator.abstractField],
+  mixins: [VueFormGenerator.abstractField],
   data: function data() {
     return {
       newItem: undefined
@@ -9999,9 +9999,6 @@ var script = {
   },
   methods: {
     generateSchema: function generateSchema(rootValue, schema, index) {
-      console.log('FieldArray -> generateSchema(', rootValue, ',', schema, ',', index, ')');
-      console.log('FieldArray -> this.schema', this.schema);
-      console.log('FieldArray -> this.value', this.value);
       var newSchema = _extends$1({}, schema);
 
       if (typeof this.schema.inputName !== "undefined") {
@@ -10010,17 +10007,14 @@ var script = {
 
       newSchema.id = this.fieldId + index;
 
-      var res = _extends$1({}, newSchema, {
+      return _extends$1({}, newSchema, {
         set: function set(model, value) {
-          console.log('FieldArray -> generatedSchema: Vue.set(', rootValue, index, value, ')');
           Vue.set(rootValue, index, value);
         },
         get: function get(model) {
           return rootValue[index];
         }
       });
-      console.log('FieldArray -> generateSchema: return', res);
-      return res;
     },
     generateInputName: function generateInputName(index) {
       if (typeof this.schema.inputName === "undefined") {
@@ -10070,12 +10064,10 @@ var script = {
     getFieldType: function getFieldType(fieldSchema) {
       return "field-" + fieldSchema.type;
     },
-    onValidated: function onValidated(isValid, errors) {
+    validated: function validated(isValid, errors) {
       this.$emit('validated', isValid, errors);
     },
     modelUpdated: function modelUpdated(model, schema) {
-      console.log('FieldArray -> modelUpdated(', model, schema, ')');
-      // Vue.set(this.value[index], schema, model);
       this.$emit("model-updated", model, schema);
     },
     validate: function validate(calledParent) {
@@ -10239,17 +10231,19 @@ var __vue_render__ = function __vue_render__() {
         schema: _vm.generateSchema(_vm.value, _vm.schema.items, index),
         formOptions: _vm.formOptions
       },
-      on: { "model-updated": _vm.modelUpdated }
+      on: {
+        validated: _vm.validated,
+        "model-updated": _vm.modelUpdated
+      }
     })], 1)], 1) : _vm.schema.items ? _c("span", [_c(_vm.getFieldType(_vm.schema.items), {
       tag: "component",
       attrs: {
-        multiple: true,
         model: item,
         schema: _vm.generateSchema(_vm.value, _vm.schema.items, index),
         formOptions: _vm.formOptions
       },
       on: {
-        validated: _vm.onValidated,
+        validated: _vm.validated,
         "model-updated": _vm.modelUpdated
       }
     })], 1) : _vm.schema.itemContainerComponent ? _c("span", [_c(_vm.schema.itemContainerComponent, {

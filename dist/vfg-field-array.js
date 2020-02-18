@@ -12,8 +12,9 @@
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('vue-form-generator'), require('lodash.isfunction'), require('lodash.isarray'), require('lodash.isstring'), require('lodash.foreach'), require('lodash.clonedeep')) :
 	typeof define === 'function' && define.amd ? define(['exports', 'vue-form-generator', 'lodash.isfunction', 'lodash.isarray', 'lodash.isstring', 'lodash.foreach', 'lodash.clonedeep'], factory) :
 	(factory((global['vfg-field-array'] = {}),global.vueFormGenerator,global.lodashIsfunction,global.lodashIsarray,global.lodashIsstring,global.lodashForeach,global.lodashClonedeep));
-}(this, (function (exports,vueFormGenerator,isFunction,isArray,isString,forEach,cloneDeep) { 'use strict';
+}(this, (function (exports,VueFormGenerator,isFunction,isArray,isString,forEach,cloneDeep) { 'use strict';
 
+VueFormGenerator = VueFormGenerator && VueFormGenerator.hasOwnProperty('default') ? VueFormGenerator['default'] : VueFormGenerator;
 isFunction = isFunction && isFunction.hasOwnProperty('default') ? isFunction['default'] : isFunction;
 isArray = isArray && isArray.hasOwnProperty('default') ? isArray['default'] : isArray;
 isString = isString && isString.hasOwnProperty('default') ? isString['default'] : isString;
@@ -9916,7 +9917,7 @@ if (inBrowser) {
 //
 
 var script = {
-  mixins: [vueFormGenerator.abstractField],
+  mixins: [VueFormGenerator.abstractField],
   data: function data() {
     return {
       newItem: undefined
@@ -9978,9 +9979,6 @@ var script = {
   },
   methods: {
     generateSchema: function generateSchema(rootValue, schema, index) {
-      console.log('FieldArray -> generateSchema(', rootValue, ',', schema, ',', index, ')');
-      console.log('FieldArray -> this.schema', this.schema);
-      console.log('FieldArray -> this.value', this.value);
       var newSchema = _extends$1({}, schema);
 
       if (typeof this.schema.inputName !== "undefined") {
@@ -9989,17 +9987,14 @@ var script = {
 
       newSchema.id = this.fieldId + index;
 
-      var res = _extends$1({}, newSchema, {
+      return _extends$1({}, newSchema, {
         set: function set(model, value) {
-          console.log('FieldArray -> generatedSchema: Vue.set(', rootValue, index, value, ')');
           Vue.set(rootValue, index, value);
         },
         get: function get(model) {
           return rootValue[index];
         }
       });
-      console.log('FieldArray -> generateSchema: return', res);
-      return res;
     },
     generateInputName: function generateInputName(index) {
       if (typeof this.schema.inputName === "undefined") {
@@ -10049,12 +10044,10 @@ var script = {
     getFieldType: function getFieldType(fieldSchema) {
       return "field-" + fieldSchema.type;
     },
-    onValidated: function onValidated(isValid, errors) {
+    validated: function validated(isValid, errors) {
       this.$emit('validated', isValid, errors);
     },
     modelUpdated: function modelUpdated(model, schema) {
-      console.log('FieldArray -> modelUpdated(', model, schema, ')');
-      // Vue.set(this.value[index], schema, model);
       this.$emit("model-updated", model, schema);
     },
     validate: function validate(calledParent) {
@@ -10218,17 +10211,19 @@ var __vue_render__ = function __vue_render__() {
         schema: _vm.generateSchema(_vm.value, _vm.schema.items, index),
         formOptions: _vm.formOptions
       },
-      on: { "model-updated": _vm.modelUpdated }
+      on: {
+        validated: _vm.validated,
+        "model-updated": _vm.modelUpdated
+      }
     })], 1)], 1) : _vm.schema.items ? _c("span", [_c(_vm.getFieldType(_vm.schema.items), {
       tag: "component",
       attrs: {
-        multiple: true,
         model: item,
         schema: _vm.generateSchema(_vm.value, _vm.schema.items, index),
         formOptions: _vm.formOptions
       },
       on: {
-        validated: _vm.onValidated,
+        validated: _vm.validated,
         "model-updated": _vm.modelUpdated
       }
     })], 1) : _vm.schema.itemContainerComponent ? _c("span", [_c(_vm.schema.itemContainerComponent, {
