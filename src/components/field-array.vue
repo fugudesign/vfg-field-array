@@ -27,6 +27,7 @@
       </span>
       <span v-else-if="schema.items">
         <component
+          :class="schema.fieldClasses"
           :is='getFieldType(schema.items)'
           :model='item'
           :schema='generateSchema(value, schema.items, index)'

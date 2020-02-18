@@ -9929,6 +9929,7 @@ if (inBrowser) {
 //
 //
 //
+//
 
 var script = {
   mixins: [VueFormGenerator.abstractField],
@@ -10231,6 +10232,7 @@ var __vue_render__ = function __vue_render__() {
       }
     })], 1)], 1) : _vm.schema.items ? _c("span", [_c(_vm.getFieldType(_vm.schema.items), {
       tag: "component",
+      class: _vm.schema.fieldClasses,
       attrs: {
         model: item,
         schema: _vm.generateSchema(_vm.value, _vm.schema.items, index),
