@@ -9934,6 +9934,9 @@ if (inBrowser) {
 //
 //
 //
+//
+//
+//
 
 var script = {
   mixins: [VueFormGenerator.abstractField],
@@ -10323,7 +10326,7 @@ var __vue_render__ = function __vue_render__() {
           _vm.$set(_vm.value, index, $event.target.value);
         }
       }
-    }), _vm._v(" "), _c("span", { staticClass: "buttons" }, [_vm.schema.showModeElementUpButton ? _c("button", {
+    }), _vm._v(" "), _c("span", { staticClass: "list-item-buttons" }, [_vm.schema.showModeElementUpButton ? _c("button", {
       class: _vm.schema.moveElementUpButtonClasses,
       domProps: {
         innerHTML: _vm._s(_vm.moveElementUpButtonLabel)
@@ -10362,11 +10365,11 @@ var __vue_render__ = function __vue_render__() {
       formOptions: _vm.formOptions
     },
     on: { "model-updated": _vm.emptyComponentModelUpdated }
-  }) : _vm._e(), _vm._v(" "), !_vm.schema.hideAddButton ? _c("button", {
+  }) : _vm._e(), _vm._v(" "), _c("div", { staticClass: "list-buttons" }, [!_vm.schema.hideAddButton ? _c("button", {
     class: _vm.schema.newElementButtonLabelClasses,
     domProps: { innerHTML: _vm._s(_vm.newElementButtonLabel) },
     on: { click: _vm.newElement }
-  }) : _vm._e()], 2) : _vm._e();
+  }) : _vm._e()])], 2) : _vm._e();
 };
 var __vue_staticRenderFns__ = [];
 __vue_render__._withStripped = true;

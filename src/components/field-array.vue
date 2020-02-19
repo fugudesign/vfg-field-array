@@ -58,7 +58,7 @@
         </component>
       </span>
       <input type="text" v-model="value[index]" :class="schema.itemFieldClasses" :name='generateInputName(index)' :id="fieldId + index" v-else/>
-      <span class="buttons">
+      <span class="list-item-buttons">
         <button
           v-html="moveElementUpButtonLabel"
           :class="schema.moveElementUpButtonClasses"
@@ -83,7 +83,10 @@
       :schema='generateSchema(this, schema.items, "newItem")'
       :formOptions='formOptions'
       @model-updated='emptyComponentModelUpdated'/>
-    <button v-if="!schema.hideAddButton" v-html="newElementButtonLabel" :class="schema.newElementButtonLabelClasses" @click="newElement"></button>
+    <div class="list-buttons">
+      <button v-if="!schema.hideAddButton" v-html="newElementButtonLabel" :class="schema.newElementButtonLabelClasses"
+              @click="newElement"></button>
+    </div>
   </div>
 </template>
 
