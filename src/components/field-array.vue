@@ -58,21 +58,23 @@
         </component>
       </span>
       <input type="text" v-model="value[index]" :class="schema.itemFieldClasses" :name='generateInputName(index)' :id="fieldId + index" v-else/>
-      <button
-        v-html="moveElementUpButtonLabel"
-        :class="schema.moveElementUpButtonClasses"
-        @click="moveElementUp(index)"
-        v-if='schema.showModeElementUpButton'></button>
-      <button
-        v-html="moveElementDownButtonLabel"
-        :class="schema.moveElementDownButtonClasses"
-        @click="moveElementDown(index)"
-        v-if='schema.showModeElementDownButton'></button>
-      <button
-        v-html="removeElementButtonLabel"
-        :class="schema.removeElementButtonClasses"
-        @click="removeElement(index)"
-        v-if='schema.showRemoveButton'></button>
+      <div class="buttons">
+        <button
+          v-html="moveElementUpButtonLabel"
+          :class="schema.moveElementUpButtonClasses"
+          @click="moveElementUp(index)"
+          v-if='schema.showModeElementUpButton'></button>
+        <button
+          v-html="moveElementDownButtonLabel"
+          :class="schema.moveElementDownButtonClasses"
+          @click="moveElementDown(index)"
+          v-if='schema.showModeElementDownButton'></button>
+        <button
+          v-html="removeElementButtonLabel"
+          :class="schema.removeElementButtonClasses"
+          @click="removeElement(index)"
+          v-if='schema.showRemoveButton'></button>
+      </div>
     </div>
     <component
       v-if="schema.showEmptyComponentAtBottom"

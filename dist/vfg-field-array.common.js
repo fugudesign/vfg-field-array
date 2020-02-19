@@ -9932,6 +9932,8 @@ if (inBrowser) {
 //
 //
 //
+//
+//
 
 var script = {
   mixins: [VueFormGenerator.abstractField],
@@ -10321,7 +10323,7 @@ var __vue_render__ = function __vue_render__() {
           _vm.$set(_vm.value, index, $event.target.value);
         }
       }
-    }), _vm._v(" "), _vm.schema.showModeElementUpButton ? _c("button", {
+    }), _vm._v(" "), _c("div", { staticClass: "buttons" }, [_vm.schema.showModeElementUpButton ? _c("button", {
       class: _vm.schema.moveElementUpButtonClasses,
       domProps: {
         innerHTML: _vm._s(_vm.moveElementUpButtonLabel)
@@ -10351,7 +10353,7 @@ var __vue_render__ = function __vue_render__() {
           return _vm.removeElement(index);
         }
       }
-    }) : _vm._e()]);
+    }) : _vm._e()])]);
   }), _vm._v(" "), _vm.schema.showEmptyComponentAtBottom ? _c(_vm.getFieldType(_vm.schema.items), {
     tag: "component",
     attrs: {
