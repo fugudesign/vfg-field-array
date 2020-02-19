@@ -58,7 +58,7 @@
         </component>
       </span>
       <input type="text" v-model="value[index]" :class="schema.itemFieldClasses" :name='generateInputName(index)' :id="fieldId + index" v-else/>
-      <div class="buttons">
+      <span class="buttons">
         <button
           v-html="moveElementUpButtonLabel"
           :class="schema.moveElementUpButtonClasses"
@@ -74,7 +74,7 @@
           :class="schema.removeElementButtonClasses"
           @click="removeElement(index)"
           v-if='schema.showRemoveButton'></button>
-      </div>
+      </span>
     </div>
     <component
       v-if="schema.showEmptyComponentAtBottom"
